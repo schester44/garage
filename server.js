@@ -218,14 +218,16 @@ function pollContactPin() {
       if (doorState === state.closed) {
         setState(state.closed);
       }
-   }
-  
-   client.publish(topics.availability, "online")
+   } 
   }, 1000);
 
   return () => clearInterval(interval);
 }
 
+
+setInterval(() => {
+  client.publish(topics.availability, "online");
+}, 60_000);
 
 pollContactPin();
 
