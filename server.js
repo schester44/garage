@@ -219,6 +219,8 @@ function pollContactPin() {
         setState(state.closed);
       }
    }
+  
+   client.publish(topics.availability, "online")
   }, 1000);
 
   return () => clearInterval(interval);
